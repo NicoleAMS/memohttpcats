@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Memo Cat Game</title>
+  <link rel="stylesheet" type="text/css" href="home.css">
+  <script src="home.js"></script>
+</head>
+<body>
+    <header>
+        <h1>MemoHTTPCats</h1>
+    </header>
+    <main>
+        <div id="play-btn">
+            <div id="play-btn-screen">
+                <p>When you press 'Play Game' you will see 30 images for about 0.5sec each. Look carefully and try to remember all of them.</p>
+                <button onClick="playGame()">Play Game</button>
+            </div>
+        </div>
+        <div id="game-canvas" class="hidden">
+            <div>
+                <img src="https://http.cat/100" alt="HTTP Cat" id="catImg">
+            </div>
+        </div>
+    </main>
+    <footer></footer>
+</body>
+</html>
