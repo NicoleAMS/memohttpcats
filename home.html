@@ -15,7 +15,7 @@
     <main>
         <div id="info-screen1" class="info">
             <div>
-                <p>When you press 'Play Game' you will see 30 images for about 0.5sec each. Look carefully and try to remember all of them.</p>
+                <p>When you click 'PLAY GAME' you will see 30 images for about 0.5 sec each. Look carefully and try to remember them. Good luck!</p>
                 <button onClick="playGame()">Play Game</button>
             </div>
         </div>
@@ -39,7 +39,13 @@
                 </div>
             </div>
         </div>
+        <div id="result-screen" class="info hidden">
+                <div>
+                    <h1>Result</h1>
+                    <p id="score"></p>
+                    <button onClick="resetGame()">Try Again</button>
+                </div>
+            </div>
     </main>
-    <footer></footer>
 </body>
 </html>

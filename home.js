@@ -4,10 +4,11 @@ const httpCodes = ["100", "101", "200", "201", "202", "204", "206", "207",
                    "408", "409", "410", "411", "412", "413", "414", "415", "416", "417", "418",
                    "420", "421", "422", "423", "424", "425", "426", "429", "431", "444", "450", "451",
                    "500", "502", "503", "504", "506", "507", "508", "509", "510", "511", "599"];
-const thirtyImages = [];
-const tenImages = [];
+let thirtyImages = [];
+let tenImages = [];
 let points = 0;
 
+// START GAME
 function playGame() {
     let infoScreen1 = document.getElementById("info-screen1");
     let gameCanvas = document.getElementById("game-canvas");
@@ -40,8 +41,7 @@ async function showImages() {
     for (let i = 0; i < thirtyImages.length; i ++) {
         let image = document.getElementById("catImg");
         image.src = "https://http.cat/" + thirtyImages[i];
-        console.log(image.src);
-        await sleep(50);
+        await sleep(500);
     }
     gameCanvas.classList.add("hidden");
     infoScreen2.classList.remove("hidden");
@@ -51,20 +51,18 @@ function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+// SELECT 10 IMAGES AND SHOW THE FIRST ON THE SCREEN
 function playGame2() {
     let infoScreen2 = document.getElementById("info-screen2");
     let gameCanvas2 = document.getElementById("game-canvas2");
     infoScreen2.classList.add("hidden");
     gameCanvas2.classList.remove("hidden");
     selectImages(10);
-    show10Images();
-}
-
-function show10Images() {
     let image = document.getElementById("catImg2");
     image.src = "https://http.cat/" + tenImages[1];
 }
 
+// CHECK USER'S ANSWER AND GIVE FEEDBACK 
 async function checkAnswer(button) {
     let feedback = document.getElementById("feedback");
     let image = document.getElementById("catImg2").src;
@@ -82,11 +80,26 @@ async function checkAnswer(button) {
     showNext(statusCode);
 }
 
+// LOOP THROUGH REMAINING 9 IMAGES AND SHOW RESULT AT THE END
 function showNext(statusCode) {
     let index = tenImages.indexOf(statusCode);
-    console.log("Index: " + index);
+    let gameCanvas2 = document.getElementById("game-canvas2");
+    let resultScreen = document.getElementById("result-screen");
+    let score = document.getElementById("score");
     let image = document.getElementById("catImg2");
     if (index < 9) {
         image.src = "https://http.cat/" + tenImages[index + 1];
+    } else {
+        resultScreen.classList.remove("hidden");
+        gameCanvas2.classList.add("hidden");
+        score.innerHTML = "You scored " + points + " out of 10 points.";
     }
+}
+
+function resetGame() {
+    let resultScreen = document.getElementById("result-screen");
+    resultScreen.classList.add("hidden");
+    thirtyImages = [];
+    tenImages = [];
+    playGame();
 }
