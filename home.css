@@ -9,11 +9,25 @@ header, footer {
 header {
     display: flex;
     align-items: center;
+    color: #a1164e;
 }
 
 footer {
     background-color: #2c6100;
     border-top: 10px solid #FFF;
+}
+
+main {
+    background-color: #000;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+}
+
+section {
+    background-color: #000;
+    padding-top: 25px;
+    height: 50px; 
 }
 
 h1 {
@@ -26,15 +40,20 @@ p {
     margin-bottom: 50px;
 }
 
-main {
-    background-color: #000;
-    height: 100vh;
-    min-height: 900px;
-    display: flex;
-    align-items: center;
+img {
+    max-height: 650px;
 }
 
-#game-canvas {
+button {
+    border-radius: 5px;
+    background-color: #2c6100;
+    border: none;
+    color: #FFF;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.canvas {
     margin: 0 auto;
 }
 
@@ -42,22 +61,34 @@ main {
     display: none;
 }
 
-#play-btn {
+.info {
     margin: 0 auto;
 }
 
-#play-btn-screen {
+.info div {
     text-align: center;
     max-width: 750px;
 }
 
-#play-btn button {
+.info button {
     font-size: 42px;
-    border-radius: 5px;
     padding: 15px 42px;
-    background-color: #2c6100;
-    border: none;
+}
+
+#feedback {
     color: #FFF;
-    text-transform: uppercase;
-    cursor: pointer;
+    margin: 0;
+    text-align: center;
+}
+
+.btn-q {
+    width: 250px;
+    height: 70px;
+    font-size: 24px;
+    margin-top: 25px;
+}
+
+#no-btn {
+    float: right;
+    background-color: #a1164e;
 }

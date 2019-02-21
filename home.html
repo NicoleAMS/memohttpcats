@@ -9,16 +9,34 @@
     <header>
         <h1>MemoHTTPCats</h1>
     </header>
+    <section>
+        <p class="hidden" id="feedback"></p>
+    </section>
     <main>
-        <div id="play-btn">
-            <div id="play-btn-screen">
+        <div id="info-screen1" class="info">
+            <div>
                 <p>When you press 'Play Game' you will see 30 images for about 0.5sec each. Look carefully and try to remember all of them.</p>
                 <button onClick="playGame()">Play Game</button>
             </div>
         </div>
-        <div id="game-canvas" class="hidden">
+        <div id="game-canvas" class="hidden canvas">
             <div>
                 <img src="https://http.cat/100" alt="HTTP Cat" id="catImg">
+            </div>
+        </div>
+        <div id="info-screen2" class="info hidden">
+            <div>
+                <p>You will now see 10 more images. Can you remember if you have seen them in the first part?</p>
+                <button onClick="playGame2()">Continue</button>               
+            </div>
+        </div>
+        <div id="game-canvas2" class="hidden canvas">
+            <div>
+                <img src="https://http.cat/100" alt="HTTP Cat" id="catImg2">
+                <div class="controls">
+                    <button id="yes-btn" class="btn-q" onClick= "checkAnswer(this.id)">Yes</button>
+                    <button id="no-btn" class="btn-q" onClick= "checkAnswer(this.id)">No</button>
+                </div>
             </div>
         </div>
     </main>
