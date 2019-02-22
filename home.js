@@ -101,5 +101,6 @@ function resetGame() {
     resultScreen.classList.add("hidden");
     thirtyImages = [];
     tenImages = [];
+    points = 0;
     playGame();
 }
