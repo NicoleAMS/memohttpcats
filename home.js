@@ -7,6 +7,7 @@ const httpCodes = ["100", "101", "200", "201", "202", "204", "206", "207",
 let thirtyImages = [];
 let tenImages = [];
 let points = 0;
+let catImg;
 
 // START GAME
 function playGame() {
@@ -15,7 +16,7 @@ function playGame() {
     infoScreen1.classList.add("hidden");
     gameCanvas.classList.remove("hidden");
     selectImages(30);
-    showImages();
+    showImages(thirtyImages);
 }
 
 // SELECT 30 OR 10 UNIQUE IMAGES
@@ -35,12 +36,12 @@ function selectImages(num) {
 
 // LOOP THROUGH 30 IMAGES AND DISPLAY EACH IMAGE 0.5 SEC WITH AWAIT
 // AWAIT NEEDS ASYNC FUNCTION
-async function showImages() {
+async function showImages(array) {
     let infoScreen2 = document.getElementById("info-screen2");
     let gameCanvas = document.getElementById("game-canvas");
-    for (let i = 0; i < thirtyImages.length; i ++) {
+    for (let i = 0; i < array.length; i ++) {
         let image = document.getElementById("catImg");
-        image.src = "https://http.cat/" + thirtyImages[i];
+        image.src = "https://http.cat/" + array[i];
         await sleep(500);
     }
     gameCanvas.classList.add("hidden");
@@ -63,21 +64,26 @@ function playGame2() {
 }
 
 // CHECK USER'S ANSWER AND GIVE FEEDBACK 
-async function checkAnswer(button) {
+function sendAnswer(button) {
     let feedback = document.getElementById("feedback");
     let image = document.getElementById("catImg2").src;
     let statusCode = image.split("/").pop();
     feedback.classList.remove("hidden");
-    if (thirtyImages.includes(statusCode) && button === "yes-btn" || 
-       !thirtyImages.includes(statusCode) && button === "no-btn") {
+    checkAnswer(button, statusCode, feedback);
+}
+
+async function checkAnswer(button, code, feedback) {
+    if (thirtyImages.includes(code) && button === "yes-btn" || 
+       !thirtyImages.includes(code) && button === "no-btn") {
         points += 1;
         feedback.innerHTML = "Correct!";
     } else  {
         feedback.innerHTML = "Wrong!";
     }
-    await sleep(1000);
-    feedback.classList.add("hidden");
-    showNext(statusCode);
+    await sleep(1000).then(() => {
+        feedback.classList.add("hidden");
+        showNext(code);
+    });
 }
 
 // LOOP THROUGH REMAINING 9 IMAGES AND SHOW RESULT AT THE END
@@ -96,9 +102,13 @@ function showNext(statusCode) {
     }
 }
 
-function resetGame() {
+function hideResultScreen() {
     let resultScreen = document.getElementById("result-screen");
     resultScreen.classList.add("hidden");
+    resetGame();
+}
+
+function resetGame() {
     thirtyImages = [];
     tenImages = [];
     points = 0;

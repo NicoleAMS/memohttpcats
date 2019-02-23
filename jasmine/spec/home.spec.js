@@ -14,10 +14,11 @@ describe('on start game', function() {
         this.gameCanvas.classList.remove("hidden");
         expect(this.gameCanvas.classList.contains('hidden')).toBeFalsy();
     }); 
-    
+
 
     describe('on selecting 30 images', function() {
         beforeAll(function() {
+            thirtyImages = [];
             selectImages(30);
         })
 
@@ -50,13 +51,14 @@ describe('on start game', function() {
             selectImages(30);
             expect(array1[0]).not.toEqual(thirtyImages[0]); 
         });
-    }); 
 
-    xit('shows selected 30 images for 0.5 sec each', function() {
+        xit('shows selected 30 images for 0.5 sec each', function() {
         // it adds the right statusCode to the url of every item in thirtyImages[]
         // it waits 0.5 sec before displaying next image (async)
-        // it changes creen to info-screen2 after the last image
-    });
+        // it changes screen to info-screen2 after the last image
+        });
+    }); 
+
 });
 
 describe('on continue game', function() {
@@ -65,10 +67,10 @@ describe('on continue game', function() {
         // new screen
     }); 
 
-    xit('randomly selects 10 unique http codes and adds it to right array', function() {
-        // items are unique
-        // items are random
-        // tenImages array contains 10 items 
+    it('randomly selects 10 unique http codes and adds it to right array', function() {
+        selectImages(10);
+        expect(tenImages.length).toEqual(10);
+        tenImages = [];
     });
 
     xit('shows first image on screen', function() {
@@ -77,10 +79,17 @@ describe('on continue game', function() {
 });
 
 describe('on user\'s response', function() {
-    xit('checks the user\'s answer and gives feedback', function() {
-        // it checks the user's answer
-        // it shows feedback (e.g. 'Correct' or 'Wrong') for 1 sec
-        // it adds 1 point to points if user is right
+
+    it('user\'s answer is correct', function() {
+        let feedbackEl = document.createElement("p");
+        thirtyImages = ["412", "101", "599", "416", "420", "450", "301", "207", "423", "414", "506", "507", "409", "511", "406", "426", "200", "510", "204", "300", "424", "408", "401", "307", "444", "422", "415", "405", "413", "503"];
+        checkAnswer("yes-btn", "412", feedbackEl);
+        expect(points).toEqual(1);
+        checkAnswer("no-btn", "101", feedbackEl);
+        expect(points).toEqual(1);
+        checkAnswer("no-btn", "100", feedbackEl);
+        expect(points).toEqual(2);
+        thirtyImages = [];
     });
 
     xit('shows the next image or results page after showing feedback for 1sec', function() {
@@ -92,11 +101,18 @@ describe('on user\'s response', function() {
 
 
 describe ('on try again', function() {
-    xit('resets the game', function() {
-        // thirtImages[], tenImages[] and points
+    beforeAll(function () {
+        spyOn(window, 'playGame').and.callFake(function() {
+        });
+    }); 
+
+    it('resets the game', function() {
+        thirtyImages = ["412", "101", "599", "416", "420", "450", "301", "207", "423", "414", "506", "507", "409", "511", "406", "426", "200", "510", "204", "300", "424", "408", "401", "307", "444", "422", "415", "405", "413", "503"];
+        resetGame();
+        expect(thirtyImages).toEqual([]);
     });
 
     xit('restarts the game', function() {
-        // startGame() is triggered
+        // playGame() is triggered
     });
 });

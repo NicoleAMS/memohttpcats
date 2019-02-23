@@ -34,8 +34,8 @@
             <div>
                 <img src="https://http.cat/100" alt="HTTP Cat" id="catImg2">
                 <div class="controls">
-                    <button id="yes-btn" class="btn-q" onClick= "checkAnswer(this.id)">Yes</button>
-                    <button id="no-btn" class="btn-q" onClick= "checkAnswer(this.id)">No</button>
+                    <button id="yes-btn" class="btn-q" onClick= "sendAnswer(this.id)">Yes</button>
+                    <button id="no-btn" class="btn-q" onClick= "sendAnswer(this.id)">No</button>
                 </div>
             </div>
         </div>
@@ -43,7 +43,7 @@
                 <div>
                     <h1>Result</h1>
                     <p id="score"></p>
-                    <button onClick="resetGame()">Try Again</button>
+                    <button onClick="hideResultScreen()">Try Again</button>
                 </div>
             </div>
     </main>
