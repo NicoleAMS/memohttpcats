@@ -2,50 +2,52 @@
 <html>
 <head>
   <title>Memo Cat Game</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="home.css">
   <script src="home.js"></script>
 </head>
 <body>
     <header>
-        <h1>MemoHTTPCats</h1>
+        <h1>Memo Cat Game</h1>
     </header>
-    <section>
-        <p class="hidden" id="feedback"></p>
+    <section id="feedback-section">
+        <p id="feedback" class="hidden"></p>
     </section>
     <main>
-        <div id="info-screen1" class="info">
+        <section id="info-screen1" class="info">
             <div>
                 <p>When you click 'PLAY GAME' you will see 30 images for about 0.5 sec each. Look carefully and try to remember them. Good luck!</p>
-                <button onClick="playGame()">Play Game</button>
+                <button type="button" onClick="playGame()">Play Game</button>
             </div>
-        </div>
-        <div id="game-canvas" class="hidden canvas">
+        </section>
+        <section id="game-canvas" class="hidden canvas">
             <div>
                 <img src="https://http.cat/100" alt="HTTP Cat" id="catImg">
             </div>
-        </div>
-        <div id="info-screen2" class="info hidden">
+        </section>
+        <section id="info-screen2" class="info hidden">
             <div>
                 <p>You will now see 10 more images. Can you remember if you have seen them in the first part?</p>
-                <button onClick="playGame2()">Continue</button>               
+                <button type="button" onClick="playGame2()">Continue</button>               
             </div>
-        </div>
-        <div id="game-canvas2" class="hidden canvas">
+        </section>
+        <section id="game-canvas2" class="hidden canvas">
             <div>
                 <img src="https://http.cat/100" alt="HTTP Cat" id="catImg2">
                 <div class="controls">
-                    <button id="yes-btn" class="btn-q" onClick= "sendAnswer(this.id)">Yes</button>
-                    <button id="no-btn" class="btn-q" onClick= "sendAnswer(this.id)">No</button>
+                    <button type="button" id="yes-btn" class="btn-q" onClick= "sendAnswer(this.id)">Yes</button>
+                    <button type="button" id="no-btn" class="btn-q" onClick= "sendAnswer(this.id)">No</button>
                 </div>
             </div>
-        </div>
-        <div id="result-screen" class="info hidden">
+        </section>
+        <section id="result-screen" class="info hidden">
             <div>
                 <h1>Result</h1>
                 <p id="score"></p>
-                <button onClick="hideResultScreen()">Try Again</button>
+                <button type="button" onClick="hideResultScreen()">Try Again</button>
             </div>
-        </div>
+        </section>
     </main>
 </body>
 </html>
